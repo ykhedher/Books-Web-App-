@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>Save New Book</h2>
+    <form [formGroup]="bookForm" (ngSubmit)="onSaveBook()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title"
+               formControlName="title">
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author"
+               formControlName="author">
+      </div>
+
+      <div class="form-group">
+        <h4>Add a picture</h4>
+        <input type="file" (change)="detectFiles($event)"
+               class="form-control" accept="image/*">
+        <p class="text-success" *ngIf="fileUploaded">File Uploaded</p>
+      </div>
+
+      <button class="btn btn-success"
+              [disabled]="bookForm.invalid || fileIsUploding "
+              type="submit">Save</button>
+    </form>
+  </div>
+</div>
